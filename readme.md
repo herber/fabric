@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/herber/xou/master/logo.png" />
+<img width="250px" src="https://raw.githubusercontent.com/herber/fabric/master/logo.png" />
 </p>
 
 > A fully featured, minimalist markdown editor.
