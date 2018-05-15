@@ -70,6 +70,10 @@ asn1@~0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.3.tgz#dac8787713c9966849fc8180777ebe9c1ddf3b86"
 
+assemble-template@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/assemble-template/-/assemble-template-1.0.0.tgz#dbdd2bd341fa3f74b8b6bd7aac47ccc22f14a720"
+
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
@@ -188,6 +192,10 @@ co@^4.6.0:
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
+
+codemirror@^5.37.0:
+  version "5.37.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.37.0.tgz#c349b584e158f590277f26d37c2469a6bc538036"
 
 color-convert@^1.9.0:
   version "1.9.1"
@@ -636,6 +644,16 @@ humanize-plus@^1.8.1:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/humanize-plus/-/humanize-plus-1.8.2.tgz#a65b34459ad6367adbb3707a82a3c9f916167030"
 
+hyperscript-attribute-to-property@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hyperscript-attribute-to-property/-/hyperscript-attribute-to-property-1.0.0.tgz#825308d49bb8e2957923f731981bcc811cad7aff"
+
+hyperx@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/hyperx/-/hyperx-2.4.0.tgz#397d6815d25785fee3c9f4968cbaafc1d8b36d39"
+  dependencies:
+    hyperscript-attribute-to-property "^1.0.0"
+
 indent-string@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
@@ -855,6 +873,10 @@ minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
+mitt@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/mitt/-/mitt-1.1.3.tgz#528c506238a05dce11cd914a741ea2cc332da9b8"
+
 mkdirp@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.0.tgz#1d73076a6df986cd9344e15e71fcc05a4c9abf12"
@@ -886,6 +908,16 @@ mri@^1.1.0:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
+nanoassert@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/nanoassert/-/nanoassert-1.1.0.tgz#4f3152e09540fde28c76f44b19bbcd1d5a42478d"
+
+nanomorph@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/nanomorph/-/nanomorph-5.1.3.tgz#65b81912bb32278aaa7aacc9ccd99b4508f6a21d"
+  dependencies:
+    nanoassert "^1.1.0"
 
 nopt@^3.0.1:
   version "3.0.6"
@@ -1342,6 +1374,10 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
+stylis@^3.4.10:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.0.tgz#016fa239663d77f868fef5b67cf201c4b7c701e1"
+
 sumchecker@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/sumchecker/-/sumchecker-1.3.1.tgz#79bb3b4456dd04f18ebdbc0d703a1d1daec5105d"
@@ -1449,6 +1485,34 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vxv-hash@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/vxv-hash/-/vxv-hash-3.1.6.tgz#6e9c66e357c2d693bf9eae190372470cf8e6beb6"
+
+vxv-insert@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/vxv-insert/-/vxv-insert-3.1.6.tgz#d0e2101957905e400d9db63dca9d77e5a19098a0"
+
+vxv-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/vxv-parser/-/vxv-parser-3.0.0.tgz#f10e4ea3c7a67e6356a4d83ebef919fafdd6dbb9"
+  dependencies:
+    stylis "^3.4.10"
+
+vxv-state@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/vxv-state/-/vxv-state-3.0.0.tgz#20d7599f0fbf4ea53f442b42039728dedbb6de4e"
+
+vxv@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/vxv/-/vxv-3.1.6.tgz#70b1577c632a196fa996350d6977bffb1a9f2613"
+  dependencies:
+    assemble-template "^1.0.0"
+    vxv-hash "^3.1.6"
+    vxv-insert "^3.1.6"
+    vxv-parser "^3.0.0"
+    vxv-state "^3.0.0"
+
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
@@ -1460,6 +1524,31 @@ xmlbuilder@8.2.2:
 xmldom@0.1.x:
   version "0.1.27"
   resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
+
+xou-browser@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/xou-browser/-/xou-browser-2.0.2.tgz#841997ce9bf477c8a7ccacf24e7f3b18e84eb7bf"
+  dependencies:
+    hyperx "^2.4.0"
+    xou-utils "^2.0.0"
+
+xou-server@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/xou-server/-/xou-server-2.0.0.tgz#5b4c5e7d2c9a0193d2299d905df5a376bb82fbe1"
+  dependencies:
+    xou-utils "^2.0.0"
+
+xou-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/xou-utils/-/xou-utils-2.0.0.tgz#42dc4110d862b9e906bc66834213486d81092f39"
+
+xou@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/xou/-/xou-2.0.2.tgz#536b208448641a5b9e1c611a2dd7f6162e95485e"
+  dependencies:
+    nanomorph "^5.1.3"
+    xou-browser "^2.0.2"
+    xou-server "^2.0.0"
 
 xtend@~2.1.1:
   version "2.1.2"
