@@ -10,6 +10,7 @@
     "email": "tobihrbr@gmail.com",
     "url": "tobihrbr.com"
   },
+  "main": "./src/index.js",
   "scripts": {
     "test": "formatted",
     "start": "electron .",
@@ -25,8 +26,12 @@
     "electron"
   ],
   "dependencies": {
+    "codemirror": "^5.37.0",
     "electron-debug": "^1.0.0",
-    "electron-titlebar": "^0.0.3"
+    "electron-titlebar": "^0.0.3",
+    "mitt": "^1.1.3",
+    "vxv": "^3.1.6",
+    "xou": "^2.0.2"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
