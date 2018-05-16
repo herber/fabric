@@ -36,6 +36,11 @@ module.exports = (emitter, state) => {
     editor.refresh();
   }, 128)
 
+  emitter.on('editor-new', () => {
+    emitter.emit('file-save');
+    emitter.emit('editor-clear');
+  });
+
   emitter.on('file-save', () => {
     if (state.filePath) {
       fs.writeFile(state.filePath, editor.getValue(), (err) => {
@@ -102,5 +107,11 @@ module.exports = (emitter, state) => {
         });
       }
     });
+
+    emitter.on('editor-clear', () => {
+      editor.setValue('');
+    });
+
+
   });
 };
