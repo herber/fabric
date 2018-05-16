@@ -34,7 +34,12 @@ module.exports = (emitter, state) => {
 
   setTimeout(() => {
     editor.refresh();
-  }, 128)
+  }, 128);
+
+  editor.on('change', (cMirror) => {
+    emitter.emit('change');
+    state.value = cMirror.getValue();
+  });
 
   emitter.on('editor-new', () => {
     if (state.filePath) {
