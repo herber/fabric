@@ -37,8 +37,22 @@ module.exports = (emitter, state) => {
   }, 128)
 
   emitter.on('editor-new', () => {
-    emitter.emit('file-save');
-    emitter.emit('editor-clear');
+    if (state.filePath) {
+      fs.writeFile(state.filePath, editor.getValue(), (err) => {
+        if (err) throw err;
+
+        open();
+      });
+    } else {
+      if (confirm('Do you want to save the current document?')) {
+        emitter.emit('file-save');
+        emitter.emit('editor-clear');
+      } else {
+        emitter.emit('editor-clear');
+      }
+    }
+
+    state.filePath = null;
   });
 
   emitter.on('file-save', () => {
