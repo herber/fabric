@@ -1,6 +1,6 @@
 module.exports = (emitter) => {
   document.addEventListener('keypress', (e) => {
-    // console.log(e.keyCode);
+    console.log(e.keyCode);
     // console.log(e.ctrlKey);
 
     if ((e.ctrlKey || e.metaKey) && e.keyCode == 14) {
@@ -23,6 +23,9 @@ module.exports = (emitter) => {
       return;
     }
 
-
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 16) {
+      emitter.emit('preview');
+      return;
+    }
   }, false);
 };
