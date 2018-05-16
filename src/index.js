@@ -1,4 +1,5 @@
 const electron = require('electron');
+const path = require('path');
 const platform = require('./utils/platform.js');
 
 const app = electron.app;
@@ -9,13 +10,13 @@ require('electron-debug')();
 // prevent window being garbage collected
 let mainWindow;
 
-function onClosed() {
+const onClosed = () => {
   // dereference the window
   // for multiple windows store them in an array
   mainWindow = null;
 }
 
-function createMainWindow() {
+const createMainWindow = () => {
   const display = electron.screen.getPrimaryDisplay();
 
   let width = Math.floor(display.workAreaSize.width * 0.6);
@@ -23,6 +24,8 @@ function createMainWindow() {
 
   if (width > 1440) width = 1440;
   if (height > 900) height = 900;
+
+  let image = electron.nativeImage.createFromPath(path.join(__dirname, '../icon.png'));
 
   const win = new electron.BrowserWindow({
     width,
@@ -38,7 +41,8 @@ function createMainWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    title: 'Fabric'
+    title: 'Fabric',
+    icon: image
   });
 
   win.once('ready-to-show', () => {
