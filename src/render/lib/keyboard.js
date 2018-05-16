@@ -1,29 +1,28 @@
-const vkey = require('vkey');
-
 module.exports = (emitter) => {
-  // mousetrap.bindGlobal(['command+s', 'ctrl+s'], () => {
-  //   console.log('a');
-  //
-  //   emitter.emit('file-save');
-  //   return false;
-  // });
-  //
-  // mousetrap.bindGlobal(['command+o', 'ctrl+o'], () => {
-  //   emitter.emit('file-open');
-  //   return false;
-  // });
-  //
-  // mousetrap.bindGlobal(['command+shift+s', 'ctrl+shift+s'], () => {
-  //   emitter.emit('file-save-as');
-  //   return false;
-  // });
-
   document.addEventListener('keypress', (e) => {
-    console.log(vkey[e.keyCode]);
+    // console.log(e.keyCode);
+    // console.log(e.ctrlKey);
 
-    console.log('meta', e.metaKey);
-    console.log('shift', e.shiftKey);
-    console.log('alt', e.altKey);
-    console.log('ctrl', e.ctrlKey);
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 14) {
+      emitter.emit('editor-new');
+      return;
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 15) {
+      emitter.emit('file-open');
+      return;
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 19 && e.shiftKey) {
+      emitter.emit('file-save-as');
+      return;
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 19) {
+      emitter.emit('file-save');
+      return;
+    }
+
+
   }, false);
 };
