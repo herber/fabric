@@ -20,6 +20,12 @@ module.exports = (emitter) => {
           click () {
             emitter.emit('file-open');
           }
+        },
+        {
+          label: 'New',
+          click () {
+            emitter.emit('editor-new');
+          }
         }
       ]
     },
