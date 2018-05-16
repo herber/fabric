@@ -1485,6 +1485,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vkey@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vkey/-/vkey-1.0.1.tgz#71c56acb759e80321c95d616c2b7fc55059181c0"
+
 vxv-hash@^3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/vxv-hash/-/vxv-hash-3.1.6.tgz#6e9c66e357c2d693bf9eae190372470cf8e6beb6"
