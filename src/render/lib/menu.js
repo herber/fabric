@@ -12,11 +12,11 @@ module.exports = (emitter) => {
         {
           label: 'Save as',
           click () {
-            emitter.emit('file-save');
+            emitter.emit('file-save-as');
           }
         },
         {
-          label: 'open',
+          label: 'Open',
           click () {
             emitter.emit('file-open');
           }
