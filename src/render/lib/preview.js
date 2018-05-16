@@ -7,6 +7,7 @@ const styles = `
 html, body {
   padding: 0;
   margin: 0;
+  background: white;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 }
 
 main {
-  width: calc(100vh - 20px);
+  max-width: calc(90vw - 30px);
   margin: 30px auto;
 }
 `;
