@@ -30,6 +30,12 @@ module.exports = (emitter) => {
       ]
     },
     {
+      label: 'Preview',
+      click () {
+        emitter.emit('preview');
+      }
+    },
+    {
       label: 'Edit',
       submenu: [
         {role: 'undo'},
