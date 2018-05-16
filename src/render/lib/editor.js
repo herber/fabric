@@ -86,32 +86,45 @@ module.exports = (emitter, state) => {
   });
 
   emitter.on('file-open', () => {
-    dialog.showOpenDialog({
-      title: 'Open file',
-      filters: [
-        { name: 'Markdown', extensions: [ 'md' ] },
-        { name: 'Text', extensions: [ 'txt' ] },
-        { name: 'All files (*.*)', extensions: [ '*.*' ] }
-      ],
-      properties: ['openFile']
-    }, (filename) => {
-      console.log(filename);
+    const open = () => {
+      dialog.showOpenDialog({
+        title: 'Open file',
+        filters: [
+          { name: 'Markdown', extensions: [ 'md' ] },
+          { name: 'Text', extensions: [ 'txt' ] },
+          { name: 'All files (*.*)', extensions: [ '*.*' ] }
+        ],
+        properties: ['openFile']
+      }, (filename) => {
+        if (filename) {
+          state.filePath = filename[0];
 
-      if (filename) {
-        state.filePath = filename[0];
+          fs.readFile(filename[0], (err, data) => {
+            if (err) throw err;
 
-        fs.readFile(filename[0], (err, data) => {
-          if (err) throw err;
+            editor.setValue(data.toString());
+          });
+        }
+      });
+    };
 
-          editor.setValue(data.toString());
-        });
+    if (state.filePath) {
+      fs.writeFile(state.filePath, editor.getValue(), (err) => {
+        if (err) throw err;
+
+        open();
+      });
+    } else {
+      if (confirm('Do you want to save the current document?')) {
+        emitter.emit('file-save');
+        open();
+      } else {
+        open();
       }
-    });
+    }
+  });
 
-    emitter.on('editor-clear', () => {
-      editor.setValue('');
-    });
-
-
+  emitter.on('editor-clear', () => {
+    editor.setValue('');
   });
 };
