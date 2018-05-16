@@ -1,6 +1,23 @@
 const { BrowserWindow, nativeImage } = require('electron').remote;
 const path = require('path');
+const fs = require('fs');
 const render = require('./render');
+
+const styles = `
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+main {
+  width: calc(100vh - 20px);
+  margin: 30px auto;
+}
+`;
 
 module.exports = (emitter, state) => {
   emitter.on('preview', () => {
@@ -8,6 +25,9 @@ module.exports = (emitter, state) => {
     const html = `<html>
       <head>
         <title>Preview</title>
+        <style>
+          ${ styles }
+        </style>
       </head>
       <body>
         <main>${ md }</main>
