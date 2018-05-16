@@ -60,4 +60,47 @@ module.exports = (emitter, state) => {
       });
     }
   });
+
+  emitter.on('file-save-as', () => {
+    dialog.showSaveDialog({
+      title: 'Save to file',
+      filters: [
+        { name: 'Markdown', extensions: [ 'md' ] },
+        { name: 'Text', extensions: [ 'txt' ] },
+        { name: 'All files (*.*)', extensions: [ '*.*' ] }
+      ]
+    }, (filename) => {
+      if (filename) {
+        state.filePath = filename;
+
+        fs.writeFile(filename, editor.getValue(), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+  });
+
+  emitter.on('file-open', () => {
+    dialog.showOpenDialog({
+      title: 'Open file',
+      filters: [
+        { name: 'Markdown', extensions: [ 'md' ] },
+        { name: 'Text', extensions: [ 'txt' ] },
+        { name: 'All files (*.*)', extensions: [ '*.*' ] }
+      ],
+      properties: ['openFile']
+    }, (filename) => {
+      console.log(filename);
+
+      if (filename) {
+        state.filePath = filename[0];
+
+        fs.readFile(filename[0], (err, data) => {
+          if (err) throw err;
+
+          editor.setValue(data.toString());
+        });
+      }
+    });
+  });
 };
