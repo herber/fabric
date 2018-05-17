@@ -5,6 +5,7 @@ const html = require('xou');
 const vxv = require('vxv');
 const fs = require('fs');
 const {dialog} = require('electron').remote;
+const isempty = require('../../utils/isempty');
 
 const opts = {
   tabSize: 2,
@@ -46,14 +47,16 @@ module.exports = (emitter, state) => {
       fs.writeFile(state.filePath, editor.getValue(), (err) => {
         if (err) throw err;
 
-        open();
+        emitter.emit('editor-clear');
       });
     } else {
-      if (confirm('Do you want to save the current document?')) {
-        emitter.emit('file-save');
-        emitter.emit('editor-clear');
-      } else {
-        emitter.emit('editor-clear');
+      if (!isempty(editor.getValue())) {
+        if (confirm('Do you want to save the current document?')) {
+          emitter.emit('file-save');
+          emitter.emit('editor-clear');
+        } else {
+          emitter.emit('editor-clear');
+        }
       }
     }
 
@@ -134,9 +137,15 @@ module.exports = (emitter, state) => {
         open();
       });
     } else {
-      if (confirm('Do you want to save the current document?')) {
-        emitter.emit('file-save');
-        open();
+      console.log(isempty(editor.getValue()));
+
+      if (!isempty(editor.getValue())) {
+        if (confirm('Do you want to save the current document?')) {
+          emitter.emit('file-save');
+          open();
+        } else {
+          open();
+        }
       } else {
         open();
       }
