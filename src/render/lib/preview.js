@@ -22,36 +22,43 @@ main {
 
 module.exports = (emitter, state) => {
   emitter.on('preview', () => {
-    const md = render(state.value);
-    const html = `<html>
-      <head>
-        <title>Preview</title>
-        <style>
+    if (state.preview) {
+      state.preview.focus();
+    } else {
+      const md = render(state.value);
+      const html = `<html>
+        <head>
+          <title>Preview</title>
+          <style>
           ${ styles }
-        </style>
-      </head>
-      <body>
-        <main>${ md }</main>
-      </body>
-    </html>`;
+          </style>
+        </head>
+        <body>
+          <main>${ md }</main>
+        </body>
+      </html>`;
 
-    let image = nativeImage.createFromPath(path.join(__dirname, '../../../icon.png'));
-    let win = new BrowserWindow({
-      width: 800,
-      height: 600,
-      show: false,
-      icon: image
-    });
+      let image = nativeImage.createFromPath(path.join(__dirname, '../../../icon.png'));
+      let win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        show: false,
+        icon: image
+      });
 
-    win.on('closed', () => {
-      win = null;
-    });
+      win.on('closed', () => {
+        win = null;
+        state.preview = null;
+      });
 
-    win.once('ready-to-show', () => {
-      win.show();
-    });
+      win.once('ready-to-show', () => {
+        win.show();
+      });
 
-    win.loadURL('data:text/html;charset=UTF-8,' + html);
-    win.setMenu(null);
-  })
+      win.loadURL('data:text/html;charset=UTF-8,' + html);
+      win.setMenu(null);
+
+      state.preview = win;
+    }
+  });
 };
