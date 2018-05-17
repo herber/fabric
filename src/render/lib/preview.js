@@ -1,4 +1,4 @@
-const { BrowserWindow, nativeImage } = require('electron').remote;
+const { BrowserWindow, nativeImage, ipcMain } = require('electron').remote;
 const path = require('path');
 const fs = require('fs');
 const render = require('./render');
@@ -35,6 +35,13 @@ module.exports = (emitter, state) => {
         </head>
         <body>
           <main>${ md }</main>
+          <script>
+            const ipc = require('electron').ipcRenderer;
+
+            ipc.on('rerender', (event, md) => {
+              document.querySelector('main').innerHTML = md;
+            });
+          </script>
         </body>
       </html>`;
 
@@ -57,6 +64,10 @@ module.exports = (emitter, state) => {
 
       win.loadURL('data:text/html;charset=UTF-8,' + html);
       win.setMenu(null);
+
+      emitter.on('change', () => {
+        win.webContents.send('rerender', render(state.value));
+      })
 
       state.preview = win;
     }
