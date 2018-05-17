@@ -6,7 +6,8 @@ const preview = require('./lib/preview');
 
 const emitter = mitt();
 const state = {
-  value: ''
+  value: '',
+  saved: false
 };
 
 titlebar(emitter, state);
