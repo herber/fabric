@@ -38,9 +38,9 @@ module.exports = (emitter, state) => {
   }, 128);
 
   editor.on('change', (cMirror) => {
-    emitter.emit('change');
     state.value = cMirror.getValue();
     state.saved = false;
+    emitter.emit('change');
   });
 
   emitter.on('editor-new', () => {
