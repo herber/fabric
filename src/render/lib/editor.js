@@ -40,6 +40,7 @@ module.exports = (emitter, state) => {
   editor.on('change', (cMirror) => {
     emitter.emit('change');
     state.value = cMirror.getValue();
+    state.saved = false;
   });
 
   emitter.on('editor-new', () => {
@@ -137,8 +138,6 @@ module.exports = (emitter, state) => {
         open();
       });
     } else {
-      console.log(isempty(editor.getValue()));
-
       if (!isempty(editor.getValue())) {
         if (confirm('Do you want to save the current document?')) {
           emitter.emit('file-save');
