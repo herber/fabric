@@ -21,7 +21,7 @@ const opts = {
 vxv`
 :global(.CodeMirror) {
   position: fixed;
-  left: 0px;
+  left: 5px;
   top: 35px;
   right: 0px;
   bottom: 0px;
