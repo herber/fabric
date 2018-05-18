@@ -1,15 +1,15 @@
-.hljs {
+.code {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
     background: #FFFFFF;
 }
 
-.hljs * {
+.code * {
   white-space: pre-wrap;
 }
 
-.hljs,
+.code,
 .code-subst {
     color: #434f54
 }
