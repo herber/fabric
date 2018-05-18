@@ -19,6 +19,25 @@ padding: 35px 10px 10px 10px;
 overflow: auto;
 border-left: solid 1px #E0E0E0;
 
+&::-webkit-scrollbar {
+  width: 6px;
+}
+
+&::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  border-radius: 3px;
+}
+
+&::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+
+&::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.0);
+}
+
 ${ styles }
 ${ codeStyles }
 `;
