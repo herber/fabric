@@ -6,32 +6,16 @@ const vxv = require('vxv');
 const render = require('./render');
 
 const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css'));
-
-const styles = `
-html, body {
-  padding: 0;
-  margin: 0;
-  background: white;
-}
-
-body {
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-main {
-  max-width: calc(90vw - 30px);
-  margin: 30px auto;
-}
-`;
+let styles = fs.readFileSync(path.join(__dirname, '../../../static/preview.css')).toString();
 
 const splitPreviewStyles = vxv`
 position: fixed;
-top: 35px;
+top: 0px;
 right: 0px;
 left: 50vw;
 bottom: 0px;
 display: none;
-padding: 0px 10px 10px 10px;
+padding: 35px 10px 10px 10px;
 overflow: auto;
 border-left: solid 1px #E0E0E0;
 
