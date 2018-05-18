@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const render = require('./render');
 
+const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css'));
+
 const styles = `
 html, body {
   padding: 0;
@@ -31,6 +33,9 @@ module.exports = (emitter, state) => {
           <title>Preview</title>
           <style>
           ${ styles }
+          </style>
+          <style>
+          ${ codeStyles }
           </style>
         </head>
         <body>
