@@ -1,4 +1,4 @@
-const {dialog} = require('electron').remote;
+const { dialog, shell } = require('electron').remote;
 const fs = require('fs');
 const render = require('./render');
 
@@ -48,6 +48,8 @@ module.exports = (emitter, state) => {
 
         fs.writeFile(filename, html, (err) => {
           if (err) throw err;
+
+          shell.openExternal('file://' + filename);
         });
       }
     });
