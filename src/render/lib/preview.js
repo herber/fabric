@@ -19,6 +19,10 @@ padding: 35px 10px 10px 10px;
 overflow: auto;
 border-left: solid 1px #E0E0E0;
 
+& a {
+  pointer-events:none;
+}
+
 &::-webkit-scrollbar {
   width: 6px;
 }
@@ -55,6 +59,11 @@ module.exports = (emitter, state) => {
       const html = `<html>
         <head>
           <title>Preview</title>
+          <style>
+            a {
+              pointer-events:none;
+            }
+          </style>
           <style>
             ${ styles }
           </style>
