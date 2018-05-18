@@ -1,0 +1,14 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  background: white;
+}
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+main {
+  max-width: calc(90vw - 30px);
+  margin: 30px auto;
+}
