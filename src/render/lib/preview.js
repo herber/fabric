@@ -39,9 +39,7 @@ ${ styles }
 ${ codeStyles }
 `;
 
-const splitPreviewElement = xou`<div class="${ splitPreviewStyles }">
-
-</div>`;
+const splitPreviewElement = xou`<div class="${ splitPreviewStyles }"></div>`;
 
 document.body.appendChild(splitPreviewElement);
 
@@ -68,6 +66,14 @@ module.exports = (emitter, state) => {
 
             ipc.on('rerender', (event, md) => {
               document.querySelector('main').innerHTML = md;
+            });
+
+            document.addEventListener('keypress', (e) => {
+              console.log(e);
+
+              if (e.keyCode == 113) {
+                window.close();
+              }
             });
           </script>
         </body>
