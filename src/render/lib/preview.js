@@ -1,6 +1,8 @@
 const { BrowserWindow, nativeImage, ipcMain } = require('electron').remote;
 const path = require('path');
 const fs = require('fs');
+const xou = require('xou');
+const vxv = require('vxv');
 const render = require('./render');
 
 const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css'));
@@ -21,6 +23,27 @@ main {
   margin: 30px auto;
 }
 `;
+
+const splitPreviewStyles = vxv`
+position: fixed;
+top: 35px;
+right: 0px;
+left: 50vw;
+bottom: 0px;
+display: none;
+padding: 0px 10px 10px 10px;
+overflow: auto;
+border-left: solid 1px #E0E0E0;
+
+${ styles }
+${ codeStyles }
+`;
+
+const splitPreviewElement = xou`<div class="${ splitPreviewStyles }">
+
+</div>`;
+
+document.body.appendChild(splitPreviewElement);
 
 module.exports = (emitter, state) => {
   emitter.on('preview', () => {
@@ -80,9 +103,29 @@ module.exports = (emitter, state) => {
         if (win) {
           win.close();
         }
-      })
+      });
 
       state.preview = win;
     }
   });
+
+  emitter.on('preview-split', () => {
+    if (!state.split) {
+      splitPreviewElement.innerHTML = render(state.value);
+      document.querySelector('.CodeMirror').style.right = '50vw';
+      splitPreviewElement.style.display = 'block';
+    } else {
+      document.querySelector('.CodeMirror').style.right = '0px';
+      splitPreviewElement.style.display = 'none';
+      splitPreviewElement.innerHTML = '';
+    }
+
+    emitter.on('change', () => {
+      if (state.split) {
+        splitPreviewElement.innerHTML = render(state.value);
+      }
+    });
+
+    state.split = !state.split;
+  })
 };
