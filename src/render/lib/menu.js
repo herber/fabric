@@ -36,6 +36,17 @@ module.exports = (emitter) => {
       }
     },
     {
+      label: 'Export',
+      submenu: [
+        {
+          label: 'Export HTML',
+          click () {
+            emitter.emit('export-html');
+          }
+        }
+      ]
+    },
+    {
       label: 'Edit',
       submenu: [
         {role: 'undo'},
