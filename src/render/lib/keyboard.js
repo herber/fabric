@@ -32,5 +32,10 @@ module.exports = (emitter) => {
       emitter.emit('export-html');
       return;
     }
+
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 2) {
+      emitter.emit('export-pdf');
+      return;
+    }
   }, false);
 };
