@@ -4,6 +4,14 @@
 
 <p align="center">A fully featured, minimalist markdown editor.</p>
 
+## Philosophy
+
+I have always been a huge fan of markdown and IA Writer. When I started using Latex I realized that markdown is not enough, that's why Fabric not only supports basic markdown, it also supports some handy non-standard features.
+
+## Screenshot
+
+![windows screenshot](https://raw.githubusercontent.com/herber/fabric/master/art/windows-screenshot.png)
+
 ## Todo
 
 - [x] Minimalist design
@@ -19,14 +27,6 @@
 - [ ] Additional markdown syntax
 - [ ] Spellchecking
 - [ ] Export to gist
-
-## Philosophy
-
-I have always been a huge fan of markdown and IA Writer. When I started using Latex I realized that markdown is not enough, that's why Fabric not only supports basic markdown, it also supports some handy non-standard features.
-
-## Screenshots
-
-![windows screenshot](https://raw.githubusercontent.com/herber/fabric/master/art/windows-screenshot.png)
 
 ## License
 
