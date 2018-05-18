@@ -37,5 +37,11 @@ module.exports = (emitter) => {
       emitter.emit('export-pdf');
       return;
     }
+
+    if ((e.ctrlKey || e.metaKey) && e.keyCode == 9) {
+      emitter.emit('preview-split');
+      return;
+    }
+
   }, false);
 };
