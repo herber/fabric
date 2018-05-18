@@ -31,9 +31,20 @@ module.exports = (emitter) => {
     },
     {
       label: 'Preview',
-      click () {
-        emitter.emit('preview');
-      }
+      submenu: [
+        {
+          label: 'Open preview window',
+          click () {
+            emitter.emit('preview');
+          }
+        },
+        {
+          label: 'Split window',
+          click () {
+            emitter.emit('preview-split');
+          }
+        }
+      ]
     },
     {
       label: 'Export',
