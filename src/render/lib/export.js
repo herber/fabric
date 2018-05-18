@@ -5,26 +5,7 @@ const render = require('./render');
 const indent = require('../../utils/indent');
 
 const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css')).toString();
-
-let styles = `
-html, body {
-  padding: 0;
-  margin: 0;
-  background: white;
-}
-
-body {
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-main {
-  max-width: calc(90vw - 30px);
-  margin: 30px auto;
-}
-`.split('\n');
-
-styles.splice(0, 1);
-styles = styles.join('\n');
+let styles = fs.readFileSync(path.join(__dirname, '../../../static/preview.css')).toString();
 
 module.exports = (emitter, state) => {
   emitter.on('export-html', () => {
