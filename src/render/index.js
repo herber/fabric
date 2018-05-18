@@ -18,3 +18,7 @@ keyboard(emitter, state);
 preview(emitter, state);
 editor(emitter, state);
 exp(emitter, state);
+
+window.onerror = (msg) => {
+  alert(msg);
+};
