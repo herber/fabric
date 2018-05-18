@@ -32,10 +32,10 @@ module.exports = (emitter, state) => {
         <head>
           <title>Preview</title>
           <style>
-          ${ styles }
+            ${ styles }
           </style>
           <style>
-          ${ codeStyles }
+            ${ codeStyles }
           </style>
         </head>
         <body>
