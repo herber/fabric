@@ -43,6 +43,12 @@ module.exports = (emitter) => {
           click () {
             emitter.emit('export-html');
           }
+        },
+        {
+          label: 'Export PDF',
+          click () {
+            emitter.emit('export-pdf');
+          }
         }
       ]
     },
