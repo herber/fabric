@@ -74,6 +74,12 @@ module.exports = (emitter, state) => {
         if (win) {
           win.webContents.send('rerender', render(state.value));
         }
+      });
+
+      window.addEventListener('beforeunload', () => {
+        if (win) {
+          win.close();
+        }
       })
 
       state.preview = win;
