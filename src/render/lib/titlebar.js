@@ -8,6 +8,7 @@ const {Menu, MenuItem} = remote;
 const styles = vxv`
 .tilebar {
   height: 29px!important;
+  z-index: 10;
 }
 
 .menu {
@@ -24,6 +25,16 @@ const styles = vxv`
 .menu:hover {
   background-color: rgba(196, 196, 196, 0.4);
 }
+
+.white {
+  position: fixed;
+  height: 35px;
+  top: 0px;
+  right: 0px;
+  background: white;
+  width: calc(50vw - 1px);
+  z-index: 5;
+}
 `;
 
 module.exports = (emitter, state) => {
@@ -34,6 +45,7 @@ module.exports = (emitter, state) => {
     const bar = html`<span class="${ styles }">
     <div id="electron-titlebar" class="drag tilebar"></div>
     <span class="menu">☰</span>
+    <div class="white"></div>
     </span>`;
 
     document.body.appendChild(bar);
