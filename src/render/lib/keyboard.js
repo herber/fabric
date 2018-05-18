@@ -42,6 +42,5 @@ module.exports = (emitter) => {
       emitter.emit('preview-split');
       return;
     }
-
   }, false);
 };
