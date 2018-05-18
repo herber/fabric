@@ -2,17 +2,14 @@ const hljs = require('highlight.js');
 
 hljs.configure({
   classPrefix: 'code-',
-  usebr: true,
-  tabReplace: '  '
+  usebr: true
 });
 
 const md = require('markdown-it')({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        console.log(hljs.highlight(lang, str, true));
-
-        return '<pre style="white-space: pre" class="hljs"><code>' +
+        return '<pre style="white-space: pre" class="code"><code>' +
            hljs.highlight(lang, str, true).value.replace(/\n/g, '<br />') +
            '</code></pre>';
       } catch (__) {}
