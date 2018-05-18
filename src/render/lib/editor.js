@@ -1,10 +1,11 @@
 const codemirror = require('codemirror');
 require('codemirror/mode/markdown/markdown');
+require('codemirror/addon/scroll/simplescrollbars');
 // require('codemirror/keymap/vim');
 const html = require('xou');
 const vxv = require('vxv');
 const fs = require('fs');
-const {dialog} = require('electron').remote;
+const { dialog } = require('electron').remote;
 const isempty = require('../../utils/isempty');
 
 const opts = {
@@ -16,6 +17,7 @@ const opts = {
   autofocus: true,
   mode: 'markdown',
   gutters: ['CodeMirror-lint-markers'],
+  scrollbarStyle: 'overlay'
 };
 
 vxv`
