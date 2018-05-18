@@ -71,7 +71,9 @@ module.exports = (emitter, state) => {
       win.setMenu(null);
 
       emitter.on('change', () => {
-        win.webContents.send('rerender', render(state.value));
+        if (win) {
+          win.webContents.send('rerender', render(state.value));
+        }
       })
 
       state.preview = win;
