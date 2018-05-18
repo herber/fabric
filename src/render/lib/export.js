@@ -1,6 +1,9 @@
 const { dialog, shell } = require('electron').remote;
 const fs = require('fs');
+const path = require('path');
 const render = require('./render');
+
+const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css'));
 
 const styles = `
 html, body {
@@ -27,6 +30,10 @@ module.exports = (emitter, state) => {
         <title>Fabric</title>
         <style>
         ${ styles }
+        </style>
+        
+        <style>
+        ${ codeStyles }
         </style>
       </head>
       <body>
