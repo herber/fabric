@@ -2,6 +2,8 @@ const electron = require('electron');
 const path = require('path');
 const platform = require('./utils/platform.js');
 
+process.setMaxListeners(200);
+
 const app = electron.app;
 
 // adds debug features like hotkeys for triggering dev tools and reload
