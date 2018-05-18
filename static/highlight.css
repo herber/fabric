@@ -2,81 +2,85 @@
     display: block;
     overflow-x: auto;
     padding: 0.5em;
-    background: #FFFFFF
+    background: #FFFFFF;
+}
+
+.hljs * {
+  white-space: pre-wrap;
 }
 
 .hljs,
-.hljs-subst {
+.code-subst {
     color: #434f54
 }
 
-.hljs-keyword,
-.hljs-attribute,
-.hljs-selector-tag,
-.hljs-doctag,
-.hljs-name {
+.code-keyword,
+.code-attribute,
+.code-selector-tag,
+.code-doctag,
+.code-name {
     color: #00979D
 }
 
-.hljs-built_in,
-.hljs-literal,
-.hljs-bullet,
-.hljs-code,
-.hljs-addition {
+.code-built_in,
+.code-literal,
+.code-bullet,
+.code-code,
+.code-addition {
     color: #D35400
 }
 
-.hljs-regexp,
-.hljs-symbol,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-link,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
+.code-regexp,
+.code-symbol,
+.code-variable,
+.code-template-variable,
+.code-link,
+.code-selector-attr,
+.code-selector-pseudo {
     color: #00979D
 }
 
-.hljs-type,
-.hljs-string,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-quote,
-.hljs-template-tag,
-.hljs-deletion {
+.code-type,
+.code-string,
+.code-selector-id,
+.code-selector-class,
+.code-quote,
+.code-template-tag,
+.code-deletion {
     color: #005C5F
 }
 
-.hljs-title,
-.hljs-section {
+.code-title,
+.code-section {
     color: #880000;
     font-weight: bold
 }
 
-.hljs-comment {
+.code-comment {
     color: rgba(149, 165, 166, 0.8)
 }
 
-.hljs-meta-keyword {
+.code-meta-keyword {
     color: #728E00
 }
 
-.hljs-meta {
+.code-meta {
     color: #728E00;
     color: #434f54
 }
 
-.hljs-emphasis {
+.code-emphasis {
     font-style: italic
 }
 
-.hljs-strong {
+.code-strong {
     font-weight: bold
 }
 
-.hljs-function {
+.code-function {
     color: #728E00
 }
 
-.hljs-number {
+.code-number {
     color: #8A7B52
 }
