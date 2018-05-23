@@ -5,6 +5,7 @@ const keyboard = require('./lib/keyboard');
 const preview = require('./lib/preview');
 const settings = require('./lib/settings');
 const exp = require('./lib/export');
+const config = require('./lib/config');
 
 const emitter = mitt();
 const state = {
@@ -19,6 +20,7 @@ preview(emitter, state);
 editor(emitter, state);
 exp(emitter, state);
 settings(emitter, state);
+config(emitter, state);
 
 window.onerror = (msg) => {
   alert(msg);
