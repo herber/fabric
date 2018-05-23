@@ -1,5 +1,7 @@
 const xou = require('xou');
 const vxv = require('vxv');
+const { shell, app } = require('electron').remote;
+const path = require('path');
 
 const styles = vxv`
 position: fixed;
@@ -54,6 +56,32 @@ input {
   height: 26px;
   width: 238px;
 }
+
+button {
+  padding: 2px 5px;
+  font-size: 16px;
+  border: 1px solid #000;
+  outline: none;
+  height: 30px;
+  width: 238px;
+  background: white;
+  transition: all .3s;
+
+  &:hover {
+    color: white;
+    background: black;
+  }
+}
+
+h1 {
+  margin: 0px;
+}
+
+.hint {
+  color: #666;
+  font-size: 12px;
+  padding-bottom: 20px;
+}
 `;
 
 module.exports = (emitter, state) => {
@@ -61,6 +89,7 @@ module.exports = (emitter, state) => {
     <span class="close">✕</span>
     <div class="content">
       <h1>Settings</h1>
+      <span class="hint">Changes are saved automatically.<br /><br /></span>
       <table>
         <tr>
           <td>PDF-Export pageSize</td>
@@ -82,6 +111,7 @@ module.exports = (emitter, state) => {
           </td>
         </tr>
       </table>
+      <button onclick=${ () => { emitter.emit('settings-open-config-dir'); } }>Open config directory</button>
     </div>
   </div`;
 
@@ -123,4 +153,10 @@ module.exports = (emitter, state) => {
   emitter.on('settings-change-title', () => {
     localStorage.setItem('settings-title', document.querySelector('.exportTitle').value);
   });
+
+  emitter.on('settings-open-config-dir', () => {
+    const confDir = path.join(app.getPath('home'), '/.fabric/styles');
+
+    shell.showItemInFolder(confDir);
+  })
 };
