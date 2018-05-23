@@ -64,6 +64,12 @@ module.exports = (emitter) => {
       ]
     },
     {
+      label: 'Settings',
+      click () {
+        emitter.emit('settings');
+      }
+    },
+    {
       label: 'Edit',
       submenu: [
         {role: 'undo'},
