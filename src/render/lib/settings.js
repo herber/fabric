@@ -33,17 +33,26 @@ display: none;
 }
 
 select {
-  width: 150px;
-  padding: 2px 35px 2px 5px;
+  width: 250px;
+  padding: 2px 5px;
   font-size: 16px;
   border: 1px solid #000;
-  height: 34px;
+  height: 30px;
   appearance: none;
   outline: none;
 }
 
 td {
   width: 100%;
+}
+
+input {
+  padding: 2px 5px;
+  font-size: 16px;
+  border: 1px solid #000;
+  outline: none;
+  height: 26px;
+  width: 238px;
 }
 `;
 
@@ -66,6 +75,12 @@ module.exports = (emitter, state) => {
             </select>
           </td>
         </tr>
+        <tr>
+          <td>Export Title</td>
+          <td>
+            <input class="exportTitle" value="${ localStorage.getItem('settings-title') || 'Fabric' }" onchange=${ () => { emitter.emit('settings-change-title'); } } />
+          </td>
+        </tr>
       </table>
     </div>
   </div`;
@@ -74,6 +89,21 @@ module.exports = (emitter, state) => {
 
   document.querySelector('.close').onclick = () => {
     emitter.emit('settings');
+  };
+
+  document.onkeydown = (evt) => {
+    evt = evt || window.event;
+    var isEscape = false;
+
+    if ('key' in evt) {
+        isEscape = (evt.key == 'Escape' || evt.key == 'Esc');
+    } else {
+        isEscape = (evt.keyCode == 27);
+    }
+
+    if (isEscape && state.settings) {
+      emitter.emit('settings');
+    }
   };
 
   emitter.on('settings', () => {
@@ -88,5 +118,9 @@ module.exports = (emitter, state) => {
 
   emitter.on('settings-change-pageSize', () => {
     localStorage.setItem('settings-pageSize', document.querySelector('.pageSize').value);
+  });
+
+  emitter.on('settings-change-title', () => {
+    localStorage.setItem('settings-title', document.querySelector('.exportTitle').value);
   });
 };
