@@ -87,7 +87,7 @@ ${ indent(md, 6) }
 
         win.once('ready-to-show', () => {
           setTimeout(() => {
-            win.webContents.printToPDF({ pageSize: 'A4', printBackground: true }, function(err, data) {
+            win.webContents.printToPDF({ pageSize: (localStorage.getItem('settings-pageSize') || 'A4'), printBackground: true }, function(err, data) {
               fs.writeFile(filename, data, (err) => {
                 if (err) throw err;
 
