@@ -9,6 +9,6 @@ body {
 }
 
 main {
-  max-width: calc(90vw - 30px);
+  max-width: 720px;
   margin: 30px auto;
 }
