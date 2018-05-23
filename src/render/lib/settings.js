@@ -28,19 +28,48 @@ display: none;
 
 .content {
   max-width: 720px;
-  margin: 40px auto 0px auto;
+  margin: 70px auto 0px auto;
   padding: 0px 20px;
+}
+
+select {
+  width: 150px;
+  padding: 2px 35px 2px 5px;
+  font-size: 16px;
+  border: 1px solid #000;
+  height: 34px;
+  appearance: none;
+  outline: none;
+}
+
+td {
+  width: 100%;
 }
 `;
 
-const element = xou`<div class="${ styles }">
-<span class="close">✕</span>
-<div class="content">
-  <h1>Settings</h1>
-</div>
-</div`;
-
 module.exports = (emitter, state) => {
+  const element = xou`<div class="${ styles }">
+    <span class="close">✕</span>
+    <div class="content">
+      <h1>Settings</h1>
+      <table>
+        <tr>
+          <td>PDF-Export pageSize</td>
+          <td>
+            <select class="pageSize" onchange=${ () => { emitter.emit('settings-change-pageSize'); } }>
+              <option value="A4">A4</option>
+              <option value="A3">A3</option>
+              <option value="A5">A5</option>
+              <option value="Legal">Legal</option>
+              <option value="Letter">Letter</option>
+              <option value="Tabloid">Tabloid</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div`;
+
   document.body.appendChild(element);
 
   document.querySelector('.close').onclick = () => {
@@ -55,5 +84,9 @@ module.exports = (emitter, state) => {
     }
 
     state.settings = !state.settings;
+  });
+
+  emitter.on('settings-change-pageSize', () => {
+    localStorage.setItem('settings-pageSize', document.querySelector('.pageSize').value);
   });
 };
