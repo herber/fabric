@@ -82,6 +82,14 @@ h1 {
   font-size: 12px;
   padding-bottom: 20px;
 }
+
+summary, details {
+  outline: none;
+}
+
+details {
+  margin: 10px 0px;
+}
 `;
 
 module.exports = (emitter, state) => {
@@ -110,7 +118,19 @@ module.exports = (emitter, state) => {
             <input class="exportTitle" value="${ localStorage.getItem('settings-title') || 'Fabric' }" onchange=${ () => { emitter.emit('settings-change-title'); } } />
           </td>
         </tr>
+        <tr>
+          <td>Syntax highlighting for code</td>
+          <td>
+            <input class="exportTitle" value="${ localStorage.getItem('settings-title') || 'Fabric' }" onchange=${ () => { emitter.emit('settings-change-title'); } } />
+          </td>
+        </tr>
       </table>
+      <details>
+      <summary>Advanced settings</summary>
+      <span class="hint">Only change these settings if you know what you are doing.<br /><br /></span>
+      <table>
+      </table>
+      </details>
       <button onclick=${ () => { emitter.emit('settings-open-config-dir'); } }>Open config directory</button>
     </div>
   </div`;
@@ -158,5 +178,5 @@ module.exports = (emitter, state) => {
     const confDir = path.join(app.getPath('home'), '/.fabric/styles');
 
     shell.showItemInFolder(confDir);
-  })
+  });
 };
