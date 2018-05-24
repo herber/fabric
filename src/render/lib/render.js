@@ -15,7 +15,7 @@ const md = require('markdown-it')({
       } catch (__) {}
     }
 
-    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+    return '<pre class="code"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
   },
   linkify: true
 });
