@@ -23,7 +23,6 @@ I have always been a huge fan of markdown and IA Writer. When I started using La
 - [x] Preview-window
 - [x] Keyboard shortcuts
 - [x] Setting
-- [ ] Onboarding
 - [ ] Customizable styles
 - [ ] Additional markdown syntax
 - [ ] Spellchecking
