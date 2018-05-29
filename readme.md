@@ -22,7 +22,7 @@ I have always been a huge fan of markdown and IA Writer. When I started using La
 - [x] Split pane preview
 - [x] Preview-window
 - [x] Keyboard shortcuts
-- [ ] Setting
+- [x] Setting
 - [ ] Customizable styles
 - [ ] Additional markdown syntax
 - [ ] Spellchecking
