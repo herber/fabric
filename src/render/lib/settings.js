@@ -119,9 +119,9 @@ module.exports = (emitter, state) => {
           </td>
         </tr>
         <tr>
-          <td>Syntax highlighting for code</td>
+          <td>Syntax highlighting</td>
           <td>
-            <input class="exportTitle" value="${ localStorage.getItem('settings-title') || 'Fabric' }" onchange=${ () => { emitter.emit('settings-change-title'); } } />
+            <input type="checkbox" class="syntaxHighlighting" ${ localStorage.getItem('settings-syntax-highlighting') == 'true' ? 'checked' : '' } onchange=${ () => { emitter.emit('settings-syntax'); } } />
           </td>
         </tr>
       </table>
@@ -172,6 +172,10 @@ module.exports = (emitter, state) => {
 
   emitter.on('settings-change-title', () => {
     localStorage.setItem('settings-title', document.querySelector('.exportTitle').value);
+  });
+
+  emitter.on('settings-syntax', () => {
+    localStorage.setItem('settings-syntax-highlighting', document.querySelector('.syntaxHighlighting').checked);
   });
 
   emitter.on('settings-open-config-dir', () => {
