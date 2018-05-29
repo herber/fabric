@@ -2,10 +2,6 @@
   The original was developed by paolo fragomeni for scratches (https://github.com/0x00A/scratches)
 */
 
-/* light theme for codemirror */
-
-/* Color scheme */
-
 body[data-theme="light"] .sep {
   background-color: #f1f1f1;
   border: 2px solid white;
@@ -16,7 +12,6 @@ body[data-theme="light"] .sep {
   color:#2e383c;
   line-height:1.4375;
 }
-
 
 .cm-s-light .CodeMirror-gutters { background: #fff; border-right: 0px; }
 .cm-s-light .cm-comment { color:#aaa; }
@@ -29,11 +24,6 @@ body[data-theme="light"] .sep {
 .cm-s-light span.cm-error { background: #db2d20; color: #ff0000; }
 
 .cm-s-light .CodeMirror-matchingbracket { color: #6ed2ed !important; }
-
-
-/* #6ed2ed */
-
-/* Editor styling */
 
 .cm-s-light pre {
   padding:0;
