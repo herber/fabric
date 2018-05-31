@@ -1,6 +1,6 @@
 const xou = require('xou');
 const vxv = require('vxv');
-const { shell, app } = require('electron').remote;
+const { shell, app, getCurrentWindow } = require('electron').remote;
 const path = require('path');
 
 const styles = vxv`
@@ -185,13 +185,18 @@ module.exports = (emitter, state) => {
           </td>
         </tr>
         <tr>
+          <td>Theme</td>
+          <td>
+            <select class="template" onchange=${ () => { emitter.emit('settings-change-template'); } }></select>
+          </td>
+        </tr>
+        <tr>
           <td>Syntax highlighting</td>
           <td>
           <label class="container">
             <input type="checkbox" class="syntaxHighlighting checkbox" ${ localStorage.getItem('settings-syntax-highlighting') == 'true' ? 'checked' : '' } onchange=${ () => { emitter.emit('settings-syntax'); } } />
             <span class="checkmark"></span>
           </label>
-
           </td>
         </tr>
       </table>
@@ -210,6 +215,18 @@ module.exports = (emitter, state) => {
   document.querySelector('.close').onclick = () => {
     emitter.emit('settings');
   };
+
+  const refreshOpts = () => {
+    const templateEl = document.querySelector('.template');
+
+    state.templateList.forEach((el) => {
+      templateEl.appendChild(xou`<option ${ localStorage.getItem('settings-template') == el ? 'selected' : '' } value="${ el }">${ el }</option>`);
+    });
+  }
+
+  emitter.on('config-template-opts', () => {
+    refreshOpts();
+  });
 
   document.onkeydown = (evt) => {
     evt = evt || window.event;
@@ -252,5 +269,11 @@ module.exports = (emitter, state) => {
     const confDir = path.join(app.getPath('home'), '/.fabric/styles');
 
     shell.showItemInFolder(confDir);
+  });
+
+  emitter.on('settings-change-template', () => {
+    localStorage.setItem('settings-template', document.querySelector('.template').value);
+
+    getCurrentWindow().reload();
   });
 };
