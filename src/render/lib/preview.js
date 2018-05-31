@@ -1,56 +1,58 @@
-const { BrowserWindow, nativeImage, ipcMain } = require('electron').remote;
+const { BrowserWindow, nativeImage, ipcMain, app } = require('electron').remote;
 const path = require('path');
 const fs = require('fs');
 const xou = require('xou');
 const vxv = require('vxv');
 const render = require('./render');
 
-const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css'));
-let styles = fs.readFileSync(path.join(__dirname, '../../../static/preview.css')).toString();
-
-const splitPreviewStyles = vxv`
-position: fixed;
-top: 0px;
-right: 0px;
-left: 50vw;
-bottom: 0px;
-display: none;
-padding: 35px 10px 10px 10px;
-overflow: auto;
-border-left: solid 1px #E0E0E0;
-
-& a {
-  pointer-events:none;
-}
-
-&::-webkit-scrollbar {
-  width: 6px;
-}
-
-&::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-  border-radius: 3px;
-}
-
-&::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background: rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-}
-
-&::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(0, 0, 0, 0.0);
-}
-
-${ styles }
-${ codeStyles }
-`;
-
-const splitPreviewElement = xou`<div class="${ splitPreviewStyles }"></div>`;
-
-document.body.appendChild(splitPreviewElement);
+const confDir = path.join(app.getPath('home'), '/.fabric');
 
 module.exports = (emitter, state) => {
+  const codeStyles = fs.readFileSync(path.join(confDir, 'styles', (localStorage.getItem('settings-template') || 'article'), 'highlight.css')).toString();
+  const styles = fs.readFileSync(path.join(confDir, 'styles', (localStorage.getItem('settings-template') || 'article'), 'preview.css')).toString();
+
+  const splitPreviewStyles = vxv`
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 50vw;
+    bottom: 0px;
+    display: none;
+    padding: 35px 10px 10px 10px;
+    overflow: auto;
+    border-left: solid 1px #E0E0E0;
+
+    & a {
+      pointer-events:none;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    }
+
+    &::-webkit-scrollbar-thumb:window-inactive {
+      background: rgba(0, 0, 0, 0.0);
+    }
+
+    ${ styles }
+    ${ codeStyles }
+  `;
+
+  const splitPreviewElement = xou`<div class="${ splitPreviewStyles }"><main class="split"></main></div>`;
+
+  document.body.appendChild(splitPreviewElement);
+
   emitter.on('preview', () => {
     if (state.preview) {
       state.preview.focus();
@@ -129,18 +131,18 @@ module.exports = (emitter, state) => {
 
   emitter.on('preview-split', () => {
     if (!state.split) {
-      splitPreviewElement.innerHTML = render(state.value);
+      document.querySelector('.split').innerHTML = render(state.value);
       document.querySelector('.CodeMirror').style.right = '50vw';
       splitPreviewElement.style.display = 'block';
     } else {
       document.querySelector('.CodeMirror').style.right = '0px';
       splitPreviewElement.style.display = 'none';
-      splitPreviewElement.innerHTML = '';
+      document.querySelector('.split').innerHTML = '';
     }
 
     emitter.on('change', () => {
       if (state.split) {
-        splitPreviewElement.innerHTML = render(state.value);
+        document.querySelector('.split').innerHTML = render(state.value);
       }
     });
 
