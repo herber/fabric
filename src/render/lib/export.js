@@ -1,13 +1,15 @@
-const { dialog, shell, BrowserWindow } = require('electron').remote;
+const { dialog, shell, BrowserWindow, app } = require('electron').remote;
 const fs = require('fs');
 const path = require('path');
 const render = require('./render');
 const indent = require('../../utils/indent');
 
-const codeStyles = fs.readFileSync(path.join(__dirname, '../../../static/highlight.css')).toString();
-let styles = fs.readFileSync(path.join(__dirname, '../../../static/preview.css')).toString();
+const confDir = path.join(app.getPath('home'), '/.fabric');
 
 module.exports = (emitter, state) => {
+  const codeStyles = fs.readFileSync(path.join(confDir, 'styles', (localStorage.getItem('settings-template') || 'article'), 'highlight.css')).toString();
+  const styles = fs.readFileSync(path.join(confDir, 'styles', (localStorage.getItem('settings-template') || 'article'), 'preview.css')).toString();
+
   emitter.on('export-html', () => {
     const md = render(state.value);
     const html = `<!DOCTYPE html>
