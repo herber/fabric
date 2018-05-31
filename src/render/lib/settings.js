@@ -200,12 +200,12 @@ module.exports = (emitter, state) => {
           </td>
         </tr>
       </table>
-      <details>
+      ${ /*<details>
       <summary>Advanced settings</summary>
       <span class="hint">Only change these settings if you know what you are doing.<br /><br /></span>
       <table>
       </table>
-      </details>
+      </details> */ '' }
       <button onclick=${ () => { emitter.emit('settings-open-config-dir'); } }>Open config directory</button>
     </div>
   </div`;
