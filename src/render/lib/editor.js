@@ -17,7 +17,8 @@ const opts = {
   autofocus: true,
   mode: 'markdown',
   gutters: ['CodeMirror-lint-markers'],
-  scrollbarStyle: 'overlay'
+  scrollbarStyle: 'overlay',
+  lineWrapping: true
 };
 
 vxv`
