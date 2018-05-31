@@ -14,14 +14,21 @@ const state = {
   settings: false
 };
 
-titlebar(emitter, state);
-keyboard(emitter, state);
-preview(emitter, state);
-editor(emitter, state);
-exp(emitter, state);
-settings(emitter, state);
+emitter.on('config-done', () => {
+  titlebar(emitter, state);
+  keyboard(emitter, state);
+  preview(emitter, state);
+  editor(emitter, state);
+  exp(emitter, state);
+  settings(emitter, state);
+});
+
 config(emitter, state);
 
 window.onerror = (msg) => {
   alert(msg);
+};
+
+window.onbeforeunload = (e) => {
+  emitter.emit('config-save');
 };
